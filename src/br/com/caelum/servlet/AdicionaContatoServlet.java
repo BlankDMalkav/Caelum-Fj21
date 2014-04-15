@@ -2,10 +2,12 @@ package br.com.caelum.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Date;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,10 +17,21 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.caelum.agenda.dao.ContatoDao;
 import br.com.caelum.agenda.modelo.Contato;
 
-import java.text.ParseException;
+
 
 @WebServlet("/adicionaContato")
 public class AdicionaContatoServlet extends HttpServlet {
+	
+	public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+        log("Iniciando a servlet");
+    }
+
+    public void destroy() {
+        super.destroy();
+        log("Perdeu servlet playboy");
+    }
+	
 	protected void service(HttpServletRequest request,
 			HttpServletResponse response) throws IOException, ServletException {
 		// busca o writer
